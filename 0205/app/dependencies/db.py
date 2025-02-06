@@ -1,7 +1,8 @@
 from sqlmodel import SQLModel, Session, create_engine, select
+from dotenv import load_dotenv
+import os
 
-db_file_name = "blog.db"
-db_url = f"sqlite:///{db_file_name}"
+db_url = os.getenv("DB_HOST")
 db_conn_args = {"check_same_thread": False}
 db_engine = create_engine(db_url, connect_args=db_conn_args)
 

@@ -2,7 +2,7 @@ from fastapi import HTTPException
 from sqlmodel import Session, select
 from app.models.post import Post
 import time
-class PostServices:
+class PostService:
     def get_post(self, db: Session, post_id: int) -> Post:
         post = db.get(Post, post_id)
         if not post:
@@ -37,7 +37,7 @@ class PostServices:
         db.commit()
         db.refresh(old_post)
         return old_post
-    
+
     def delete_post(self, db: Session, post_id: int) -> None:
         post = db.get(Post, post_id)
         if not post:
